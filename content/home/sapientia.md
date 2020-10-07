@@ -39,7 +39,7 @@ hero_media = "sapientia.jpg"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [cta]
-  url = "sapientia"
+  url = "livres/sapientia"
   label = "Détails de l’ouvrage et commande…"
   icon_pack = "fas"
   icon = "book-reader"

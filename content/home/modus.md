@@ -39,7 +39,7 @@ hero_media = "modus.png"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [cta]
-  url = "modus"
+  url = "livres/modus"
   label = "Détails de l’ouvrage et commande…"
   icon_pack = "fas"
   icon = "book-reader"

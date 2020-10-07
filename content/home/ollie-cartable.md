@@ -39,7 +39,7 @@ hero_media = "ollie-cartable.png"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [cta]
-  url = "ollie-cartable"
+  url = "livres/ollie-cartable"
   label = "Détails de l’ouvrage et commande…"
   icon_pack = "fas"
   icon = "book-reader"

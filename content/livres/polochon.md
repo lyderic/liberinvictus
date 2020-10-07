@@ -5,6 +5,7 @@ active = true  # Activate this widget? true/false
 
 title = "Polochon et le lutin"
 subtitle = "Une histoire fantastique avec des lutins, des dieux et un poney"
+date = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -34,6 +35,8 @@ subtitle = "Une histoire fantastique avec des lutins, des dieux et un poney"
  # CSS class.
  css_class = ""
 +++
+
+![polochon](/static/media/polochon.png)
 
 Xila habite Londres. Pendant les vacances, elle adore se rendre chez sa grand-mère en France où elle peut se livrer à sa grande passion : l'équitation.
 
