@@ -3,13 +3,12 @@ widget = "coucou"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = false  # This file doesn't represent a page section.
 active = true  # Activate this widget? true/false
 
-title = "Polochon et le lutin"
-subtitle = "Une histoire fantastique avec des lutins, des dieux et un poney"
-date = ""
+title = "Sapientia"
+subtitle = "Un recueil de citations"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "1"
+  columns = "2"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -36,8 +35,11 @@ date = ""
  css_class = ""
 +++
 
-{{< figure library="true" src="polochon.png" title="Polochon et le lutin" >}}
+{{< figure library="true" src="sapientia.png" title="Sapientia" >}}
 
-Xila habite Londres. Pendant les vacances, elle adore se rendre chez sa grand-mère en France où elle peut se livrer à sa grande passion : l'équitation.
+Pendant des années, au cours de mes lectures et de mes rencontres, j’ai pris note de dizaines de citations qui me plaisaient, qui me parlaient ou qui me faisaient réfléchir. Ces pensées se présentent sans aucun ordre. Elles émanent d’auteurs extrêmement divers : philosophes, écrivains, musiciens, fantaisistes… Une seule chose les rassemble : elles me séduisent, elles me fascinent ou elles m’enchantent ; en tous les cas, elle m’aident à vivre et elle m’enrichissent.
 
-Un jour, elle rencontre un poney nommé Polochon. Il va devenir son meilleur ami et lui faire découvrir le monde enchanté des lutins des bois. Xila aura bien besoin du soutien de ses nouveaux amis quand il lui faudra sauver la vie de son papa, atteint d'un mal mystérieux.
+Que vous les preniez comme une consolation ou comme une occasion de vous poser des questions, j’espère qu’elles vous apporteront autant qu’à moi.
+
+ISBN : 978-17-908-3660-4
+86 pages – 6,00 €

@@ -27,6 +27,24 @@
 	weight = 20
 
 [[main]]
+	name = "Le cartable d'Ollie"
+	parent = "livres"
+	url = "livres/ollie-cartable"
+	weight = 30
+
+[[main]]
+	name = "Totor"
+	parent = "livres"
+	url = "livres/totor"
+	weight = 40
+
+[[main]]
+	name = "Sapientia"
+	parent = "livres"
+	url = "livres/sapientia"
+	weight = 50
+
+[[main]]
   name = "Contactez-nous"
   url = "contact"
   weight = 30

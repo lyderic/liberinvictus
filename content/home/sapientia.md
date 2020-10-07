@@ -8,7 +8,7 @@ weight = 1000  # Order that this section will appear.
 title = "Sapientia"
 
 # Hero image (optional). Enter filename of an image in the `static/media/` folder.
-hero_media = "sapientia.jpg"
+hero_media = "sapientia.png"
 
 [design.background]
   # Apply a background color, gradient, or image.

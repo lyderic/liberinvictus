@@ -3,13 +3,12 @@ widget = "coucou"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = false  # This file doesn't represent a page section.
 active = true  # Activate this widget? true/false
 
-title = "Polochon et le lutin"
-subtitle = "Une histoire fantastique avec des lutins, des dieux et un poney"
-date = ""
+title = "Le cartable d'Ollie"
+subtitle = "La première aventure d'Ollie"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "1"
+  columns = "2"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -36,8 +35,11 @@ date = ""
  css_class = ""
 +++
 
-{{< figure library="true" src="polochon.png" title="Polochon et le lutin" >}}
+{{< figure library="true" src="ollie-cartable.png" title="Le cartable d'Ollie" >}}
 
-Xila habite Londres. Pendant les vacances, elle adore se rendre chez sa grand-mère en France où elle peut se livrer à sa grande passion : l'équitation.
+Pour son anniversaire, Ollie reçoit un cartable de sa marraine. Qu’il est moche ! Ollie refuse de prendre son nouveau cartable pour aller à l’école…
 
-Un jour, elle rencontre un poney nommé Polochon. Il va devenir son meilleur ami et lui faire découvrir le monde enchanté des lutins des bois. Xila aura bien besoin du soutien de ses nouveaux amis quand il lui faudra sauver la vie de son papa, atteint d'un mal mystérieux.
+Ce court roman en six chapitres est destiné aux lecteurs débutants, à partir de 7 ans.
+
+ISBN : 978-16-991-9030-2
+46 pages ─ 4,00 €
