@@ -53,3 +53,7 @@ weight = 10  # Order that this section will appear.
 +++
 
 <img src="media/banner.png" alt="Liber Invictus" style="display:block;margin-left:auto;margin-right:auto" />
+
+<h1 style="text-align:center;font-family:sans-serif;color:#5E3450">
+Liber Invictus est une petite maison d’édition dont le but est de faire paraître des livres de style au contenu original.
+</h1>

@@ -3,12 +3,12 @@
 widget = "hero"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 970  # Order that this section will appear.
+weight = 960  # Order that this section will appear.
 
-title = "Le cartable d'Ollie"
+title = "Polochon et le lutin"
 
 # Hero image (optional). Enter filename of an image in the `static/media/` folder.
-hero_media = "ollie-cartable.png"
+hero_media = "polochon.png"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -39,14 +39,19 @@ hero_media = "ollie-cartable.png"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [cta]
-  url = "ollie-cartable"
+  url = "livres/polochon"
   label = "Détails de l’ouvrage et commande…"
   icon_pack = "fas"
   icon = "book-reader"
+
+[advanced]
+ # Custom CSS. 
+ css_style = ""
+ 
+ # CSS class.
+ css_class = ""
 +++
 
-**Faites découvrir la lecture à vos enfants grâce à ce petit livre. Dès 7 ans.**
+**Une histoire fantastique avec des lutins, des dieux et un poney**
 
-Pour son anniversaire, Ollie reçoit un cartable de sa marraine. Qu’il est moche ! Ollie refuse de prendre son nouveau cartable pour aller à l’école…
-
-Ce livre est le premier de la collection Premières lectures.
+Xila, 9 ans, rencontre le poney Polochon pendant les vacances. Celui-ci devient son meilleur ami et lui fait découvrir le monde enchanté des lutins des bois.
