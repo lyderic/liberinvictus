@@ -22,7 +22,8 @@ day_night = false
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in font sets in `themes/academic/data/fonts/`
 #   Browse user installed font sets in `data/fonts/`
-font = ""
+# Set up by lyderic on 11-03-2021
+font = "lyderic_font_set"
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
@@ -122,7 +123,7 @@ contact_links = []
 ## Social
 ############################
 
-# Default image for social sharing and search engines. Place image in `static/media/` folder and specify image name here.
+# Default image for social sharing and search engines. Place image in `assets/media/` folder and specify image name here.
 sharing_image = ""
 
 # Twitter username (without @). Used when a visitor shares your site on Twitter.
