@@ -6,12 +6,12 @@ weight = 10
 
 title = "Le poney d'Ollie"
 subtitle = "Le deuxième tome des aventures d'Ollie"
-image = "ollie-cartable.png"
-isbn = "978-16-991-9030-2"
+image = "ollie-poney.png"
+isbn = "979-86-214-3118-1"
 pages = "48"
 price = "4,00"
-amazon = "https://www.amazon.fr/dp/XXXXXXXXXX/"
-kindle = "https://www.amazon.fr/dp/XXXXXXXXXX"
+amazon = "https://www.amazon.fr/dp/B08YS5Z2LB/"
+kindle = "https://www.amazon.fr/dp/B08YNNYP1J/"
 kobo = "https://www.kobo.com/fr/fr/ebook/le-poney-d-ollie"
 +++
 
