@@ -47,4 +47,4 @@ hero_media = "modus.png"
 
 **Le premier roman de Lydéric Landry**
 
-Un roman historique complètement déjanté relatant les aventure de Modus, esclave essuie-main à la cour de l’empereur romain Commodus.
+Un roman historique complètement déjanté relatant les aventures de Modus, esclave essuie-main à la cour de l’empereur romain Commodus.
