@@ -1,0 +1,10 @@
+{{ define "main" }}
+
+<div class="h-100 p-5 bg-light border rounded-3">
+	<h2>{{ .Title }}</h2>
+	<p>Les livres publiés par Liber Invictus</p>
+</div>
+
+{{ partial "liste-livres.html" . }} 
+
+{{ end }}

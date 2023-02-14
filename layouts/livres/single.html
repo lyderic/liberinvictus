@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<!-- <div style="color:#494949"> -->
+<div class="purple">
+	<div style="text-align:center">
+		<div style="font-size:3rem">
+			{{ .Params.Title }}
+		</div>
+		<div>
+			{{ .Params.Subtitle }}
+		</div>
+	</div>
+	<div style="border:3px solid #7b554a;border-radius:8px;margin-top:20px">
+		<img
+			src="{{ printf "media/%s" .Params.Image | relURL }}"
+			alt="{{ .Params.Title }}"
+			style="float:left;border:2px solid #7b554a;border-radius:8px;margin:30px" />
+		<div style="font-size:1.5rem;margin-left:7px;margin-top:70px">
+			<p>Commander :</p>
+			<p><a href="{{ .Params.Amazon }}" target="_blank"><img src="{{ "media/amazon32px.png" | relURL }}" /></a></p>
+			{{ if .Params.Kindle }}
+			<p><a href="{{ .Params.Kindle }}" target="_blank"><img src="{{ "media/kindle32px.png" | relURL }}" /></a></p>
+			{{ end }}
+			{{ if .Params.Kobo }}
+			<p><a href="{{ .Params.Kobo }}" target="_blank"><img src="{{ "media/kobo32px.png" | relURL }}" /></a></p>
+			{{ end }}
+		</div>
+	</div>
+	<div style="margin-top:20px">
+		ISBN: {{ .Params.Isbn }}<br />
+		{{ .Params.Pages }}&nbsp;pages - {{ .Params.Price }}&nbsp;€
+	</div>
+	<div style="clear:both;font-size:1.5rem;text-align:justify">
+		{{ .Content }}
+	</div>
+</div>
+
+{{ end }}

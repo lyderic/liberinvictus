@@ -1,0 +1,17 @@
+baseURL: "https://liberinvictus.com/"
+languageCode: "fr-fr"
+title: "Liber Invictus"
+
+params:
+  homeText: " Liber Invictus est une petite maison d’édition dont le but est de faire paraître des livres de style au contenu original."
+
+menu:
+  main:
+    - name: "Liber Invictus"
+      pre: "home"
+      url: "/"
+      weight: 1
+    - name: "contact"
+      pre: "mail"
+      url: "/contact/"
+      weight: 2

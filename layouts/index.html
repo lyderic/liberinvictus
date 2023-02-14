@@ -1,0 +1,17 @@
+{{define "main" }}
+
+<div class="container text-center" style="margin:1em">
+	<img src="media/banner.png" height="180px" />
+</div>
+
+<div id="home-jumbotron" class="jumbotron text-center">
+	<p class="font-125">{{ .Site.Params.homeText | markdownify }}</p>
+</div>
+
+<div class="container text-center h-100 p-5 bg-light border rounded-3">
+	<h2>Découvrez nos livres</h2>
+</div>
+
+{{ partial "liste-livres.html" . }}
+
+{{ end }}
