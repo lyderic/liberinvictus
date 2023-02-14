@@ -3,7 +3,7 @@ title: "L'essuie-main de l'empereur"
 date: 2019-03-01T12:59:42+01:00
 weight: 1
 draft: false
-subtitle: "Le premier roman de Lydéric Landry"
+subtitle: "Les tribulations de l'esclave essuie-main de l'empereur romain Commodus"
 image: "modus.png"
 isbn: "978-17-908-6415-7"
 pages: "246"

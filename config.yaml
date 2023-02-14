@@ -5,6 +5,7 @@ enableGitInfo: true
 
 params:
   homeText: " Liber Invictus est une petite maison d’édition dont le but est de faire paraître des livres de style au contenu original."
+  containerMaxWidth: "1024px"
 
 menu:
   main:
