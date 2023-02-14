@@ -1,3 +1,6 @@
+alias view := serve
+alias server := serve
+
 _listing:
 	@printf "${BLU}{{justfile()}}${NOC}\n"
 	@just --unsorted --list --list-heading='' --list-prefix=' • ' \
@@ -10,7 +13,10 @@ compile:
 	hugo --gc --minify -b https://liberinvictus.com
 
 serve:
-	hugo server --disableFastRender --bind 0.0.0.0
+	hugo server --disableFastRender --enableGitInfo --bind 0.0.0.0
+
+httpd: compile
+	busybox httpd -f -vv -p 8899 -h public
 
 set shell := ["bash","-uc"]
 # vim: ft=make
