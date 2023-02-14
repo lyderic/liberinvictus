@@ -1,26 +1,27 @@
 {{ define "main" }}
 
-<h2 class="text-center">{{ .Params.subtitle }}</h2>
+<div class="h-100 p-5 bg-light border rounded-3">
+	<h2 class="text-center">{{ .Params.subtitle }}</h2>
+</div>
 
-<form name="contact" method="POST" data-netlify="true">
-	<div class="mb-3">
-    <label for="nom" class="form-label">Nom :</label>
-    <input name="nom" type="text" class="form-control" id="nom" aria-describedby="emailHelp">
-		<!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-	<div class="mb-3">
-    <label for="email" class="form-label">Adresse email :</label>
-    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-		<!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="message" class="form-label">Message :</label>
-		<textarea name="message" class="form-control" id="message" rows="5"></textarea>
-  </div>
-  <p>
-		<button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
-  </p>
-
-</form>
+<div style="margin-top:1em">
+	<form name="contact" method="POST" data-netlify="true">
+		<div class="mb-3">
+			<label for="nom" class="form-label">Nom :</label>
+			<input name="nom" type="text" class="form-control" id="nom">
+		<div class="mb-3">
+			<label for="email" class="form-label">Adresse email :</label>
+			<input name="email" type="email" class="form-control" id="email">
+		</div>
+		<div class="mb-3">
+			<label for="message" class="form-label">Message :</label>
+			<textarea name="message" class="form-control"
+				id="message" rows="5"></textarea>
+		</div>
+		<div class="text-center" style="padding:1em">
+			<button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
+		</div>
+	</form>
+</div>
 
 {{ end }}
