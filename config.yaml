@@ -1,6 +1,7 @@
 baseURL: "https://liberinvictus.com/"
 languageCode: "fr-fr"
 title: "Liber Invictus"
+enableGitInfo: true
 
 params:
   homeText: " Liber Invictus est une petite maison d’édition dont le but est de faire paraître des livres de style au contenu original."
