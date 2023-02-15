@@ -1,16 +1,22 @@
+{{ $purple := "#5C3551" }}
+
 <style>
+
 .container {
   max-width: {{ .Site.Params.containerMaxWidth | default "700px" | safeCSS }};
 }
+
 #nav a {
   font-weight: bold;
   color: inherit;
 }
+
 #nav-border {
   border-bottom: 1px solid #212529;
 }
+
 #main {
-	color: #5C3551;
+	color: {{ $purple }};
   margin-top: 1em;
   margin-bottom: 4em;
 	/*
@@ -20,29 +26,50 @@
 	border-radius: 8px;
 	*/
 }
+
 #home-jumbotron {
   background-color: inherit;
 }
+
 .purple {
-	color: #5C3551;
+	color: {{ $purple }};
 }
+
 .font-125 {
   font-size: 125%;
 }
+
 .tag-btn {
   margin-bottom: 0.3em;
 }
+
 img {
   max-width: 100%;
 }
+
 .foot {
-	background-color: #5C3551;
+	/*
+	background-color: {{ $purple }};
 	color: white;
+  */
+	color: {{ $purple }};
 	padding: 0.5em;
+	border: 1px solid {{ $purple }};
 	border-radius: 4px;
 	margin-bottom: 0.5em;
 }
+
+.info-title {
+	background-color: {{ $purple }};
+	color: white;
+	padding: 1em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	border-radius: 5px
+}
+
 </style>
+
 <!--
 	vim: ft=css
 -->

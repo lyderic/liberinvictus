@@ -15,7 +15,9 @@ compile:
 serve:
 	hugo server --disableFastRender --enableGitInfo --bind 0.0.0.0
 
-httpd: compile
+publish: clean compile
+
+httpd: publish
 	busybox httpd -f -vv -p 8899 -h public
 
 set shell := ["bash","-uc"]

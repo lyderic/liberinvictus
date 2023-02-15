@@ -1,13 +1,13 @@
 {{ define "main" }}
 
 <div class="h-100 p-5 bg-light border rounded-3">
-	<h2>Informations diverses</h2>
+	<h2>{{ .Title }}</h2>
 </div>
 
 <ul style="padding:1em">
 {{ range .Pages }}
 	<li>
-		<a href="{{ .Permalink }}">{{ .Title }}</a>
+		<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 	</li>
 {{ end }}
 </ul>

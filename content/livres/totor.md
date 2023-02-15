@@ -10,3 +10,5 @@ pages: "192"
 price: "10,00"
 amazon: "https://www.amazon.fr/dp/1073526984/"
 ---
+
+Les meilleurs poèmes de Totor (Victor Hugo), choisis et présentés par un profane... voilà qui est rafraîchissant.

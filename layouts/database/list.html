@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<div class="h-100 p-5 bg-light border rounded-3">
+	<h2>{{ .Title }}</h2>
+</div>
+
+
+<div style="margin-top:2em">
+	{{ range $key, $value := .Site.Data.livres }}
+		<h3><a href="/livres/{{ $key }}">{{ .title }}</a></h3>
+		<table class="table">
+			<tr><td>oneliner:</td><td>{{ .oneliner }}</td></tr>
+			<tr><td>date:</td><td>{{ .date }}</td></tr>
+			<tr><td>weight:</td><td>{{ .weight }}</td></tr>
+			<tr><td>draft:</td><td>{{ .draft }}</td></tr>
+			<tr><td>image:</td><td>{{ .image }}</td></tr>
+			<tr><td>isbn:</td><td>{{ .isbn }}</td></tr>
+			<tr><td>pages:</td><td>{{ .pages }}</td></tr>
+			<tr><td>price:</td><td>{{ .price }}</td></tr>
+			<tr><td>amazon:</td><td>{{ .amazon }}</td></tr>
+			<tr><td>kindle:</td><td>{{ .kindle }}</td></tr>
+			<tr><td>kobo:</td><td>{{ .kobo }}</td></tr>
+			<tr><td>quatrieme:</td><td>{{ .quatrieme }}</td></tr>
+		</table>
+	{{ end }}
+</div>
+
+{{ end }}
