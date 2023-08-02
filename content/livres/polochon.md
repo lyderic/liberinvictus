@@ -2,7 +2,7 @@
 title: "Polochon et le lutin"
 subtitle: "Une histoire fantastique avec des lutins, des dieux et un poney"
 date: 2020-10-06T13:12:33+01:00
-weight: 2
+weight: 3
 draft: false
 image: "polochon.png"
 isbn: "978-1-796-42616-8"

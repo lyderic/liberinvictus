@@ -2,7 +2,7 @@
 title: "L'héritage"
 subtitle: "Une des meilleures nouvelles de Maupassant"
 date: 2023-02-14T06:18:32+01:00
-weight: 3
+weight: 20
 draft: false
 image: "heritage.png"
 isbn: "979-87-301-6299-0"
