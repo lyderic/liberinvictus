@@ -10,12 +10,15 @@
 			{{ .Params.Subtitle }}
 		</div>
 	</div>
-	<div style="border:3px solid #7b554a;border-radius:8px;margin-top:20px">
-		<img
-			src="{{ printf "media/%s" .Params.Image | relURL }}"
-			alt="{{ .Params.Title }}"
-			style="float:left;border:2px solid #7b554a;border-radius:8px;margin:30px" />
-		<div style="font-size:1.5rem;margin-left:7px;margin-top:70px">
+	<!-- <div style="border:3px solid #7b554a;border-radius:8px;margin-top:20px"> -->
+	<div style="border:3px solid #7b554a;border-radius:8px;padding:2em;margin-top:1em">
+		<div style="float:left;border:2px solid #7b554a;margin-right:2em;">
+			<img
+				src="{{ printf "media/%s" .Params.Image | relURL }}"
+				alt="{{ .Params.Title }}" />
+		</div>
+		<!-- <div style="font-size:1.5rem;margin-left:7px;margin-top:70px"> -->
+		<div style="font-size:1.5rem;">
 			<p>Commander :</p>
 			<p><a href="{{ .Params.Amazon }}" target="_blank"><img src="{{ "media/amazon32px.png" | relURL }}" /></a></p>
 			{{ if .Params.Kindle }}
@@ -24,13 +27,17 @@
 			{{ if .Params.Kobo }}
 			<p><a href="{{ .Params.Kobo }}" target="_blank"><img src="{{ "media/kobo32px.png" | relURL }}" /></a></p>
 			{{ end }}
+			<p>
+				ISBN: {{ .Params.Isbn }}<br />
+				{{ .Params.Pages }}&nbsp;pages - {{ .Params.Price }}&nbsp;€
+			</p>
+			<p><b>
+				Si vous préférez commander sans passer par Amazon ou bien si vous êtes libraire&nbsp;:<br />
+				<a href="https://liberinvictus.com/contact/" target="_blank">Prenez contact avec nous</a>.
+			</b></p>
 		</div>
 	</div>
-	<div style="margin-top:20px">
-		ISBN: {{ .Params.Isbn }}<br />
-		{{ .Params.Pages }}&nbsp;pages - {{ .Params.Price }}&nbsp;€
-	</div>
-	<div style="clear:both;font-size:1.5rem;text-align:justify">
+	<div style="clear:both;font-size:1.5rem;text-align:justify;margin-top:2em;">
 		{{ .Content }}
 	</div>
 </div>
