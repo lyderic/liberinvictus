@@ -21,4 +21,3 @@ httpd: publish
 	busybox httpd -f -vv -p 8899 -h public
 
 set shell := ["bash","-uc"]
-# vim: ft=make
