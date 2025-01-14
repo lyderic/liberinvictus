@@ -16,7 +16,8 @@ serve:
 	hugo server --disableFastRender --enableGitInfo --bind 0.0.0.0
 
 publish: clean compile
-	echo -e "\e[37mDeploy manually to https://pages.cloudflare.com\e[m"
+	#!/bin/bash
+	header "\n   Deploy manually to https://pages.cloudflare.com\n"
 
 httpd: publish
 	busybox httpd -f -vv -p 8899 -h public
