@@ -2,7 +2,7 @@
 title: "Le pixie d'Ollie"
 subtitle: "Le quatrième tome des aventures d'Ollie"
 date: 2024-12-24T13:14:07+01:00
-weight: 14
+weight: 104
 draft: false
 image: "ollie-pixie.png"
 isbn: "979-8-344-19408-0"

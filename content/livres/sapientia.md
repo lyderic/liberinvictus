@@ -2,7 +2,7 @@
 title: "Sapientia"
 subtitle: "Un recueil de citations"
 date: 2019-01-04T13:14:07+01:00
-weight: 4
+weight: 50
 draft: false
 image: "sapientia.png"
 isbn: "978-17-908-3660-4"

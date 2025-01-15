@@ -2,7 +2,7 @@
 title: "L'héritage"
 subtitle: "Une des meilleures nouvelles de Maupassant"
 date: 2023-02-14T06:18:32+01:00
-weight: 20
+weight: 200
 draft: false
 image: "heritage.png"
 isbn: "979-87-301-6299-0"
@@ -10,6 +10,7 @@ pages: "130"
 price: "5,00"
 amazon: "https://www.amazon.fr/dp/B0BMT3998M/"
 kindle: "https://www.amazon.fr/dp/B0BN2JR4XZ/"
+kobo:
 ---
 
 Avoir un enfant : voici la condition pour hériter d'une vieille tante grincheuse. Que faire quand on est un couple stérile ?
