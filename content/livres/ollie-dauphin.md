@@ -8,9 +8,9 @@ image: "ollie-dauphin.png"
 isbn: "979-85-754-6462-4"
 pages: "50"
 price: "4,00"
-amazon: "https://www.amazon.fr/dp/B09HG4QW43/"
-kindle: "https://www.amazon.fr/dp/B09HCNSJ79/"
-kobo: "https://www.kobo.com/fr/fr/ebook/le-dauphin-d-ollie"
+amazon: "B09HG4QW43/"
+kindle: "B09HCNSJ79/"
+kobo: "le-dauphin-d-ollie"
 ---
 
 Elle est super, la piscine de Papi et Mamie ! Ollie y passe ses vacances avec son cousin Zel. Seul problème : il n'y a pas de bouée pour jouer. Heureusement, Baggy est là. Et il est toujours prêt à aider.

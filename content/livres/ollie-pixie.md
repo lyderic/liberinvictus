@@ -8,9 +8,9 @@ image: "ollie-pixie.png"
 isbn: "979-8-344-19408-0"
 pages: "72"
 price: "4,00"
-amazon: "https://www.amazon.fr/dp/B0DQH8CB48/"
-kindle: "https://www.amazon.fr/dp/B0DQH8GYX6/"
-kobo: "https://www.kobo.com/fr/fr/ebook/le-pixie-d-ollie"
+amazon: "B0DQH8CB48/"
+kindle: "B0DQH8GYX6/"
+kobo: "le-pixie-d-ollie"
 ---
 
 Il faut sauver Zéphire, le pixie blessé ! Ollie et sa nouvelle amie, la mystérieuse Lotte, ne savent que faire. Heureusement, Baggy est là.

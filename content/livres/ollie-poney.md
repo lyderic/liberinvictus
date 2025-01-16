@@ -8,9 +8,9 @@ image: "ollie-poney.png"
 isbn: "979-86-214-3118-1"
 pages: "48"
 price: "4,00"
-amazon: "https://www.amazon.fr/dp/B08YS5Z2LB/"
-kindle: "https://www.amazon.fr/dp/B08YNNYP1J/"
-kobo: "https://www.kobo.com/fr/fr/ebook/le-poney-d-ollie"
+amazon: "B08YS5Z2LB/"
+kindle: "B08YNNYP1J/"
+kobo: "le-poney-d-ollie"
 ---
 
 Ollie est invitée à passer les vacances en Pologne, chez les grands-parents de Vikkie, sa meilleure amie.

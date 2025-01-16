@@ -20,12 +20,12 @@
 		<!-- <div style="font-size:1.5rem;margin-left:7px;margin-top:70px"> -->
 		<div style="font-size:1.5rem;">
 			<p>Commander :</p>
-			<p><a href="{{ .Params.Amazon }}" target="_blank"><img src="{{ "media/amazon32px.png" | relURL }}" /></a></p>
+			<p><a href="https://www.amazon.fr/dp/{{ .Params.Amazon }}" target="_blank"><img src="{{ "media/amazon32px.png" | relURL }}" /></a></p>
 			{{ if .Params.Kindle }}
-			<p><a href="{{ .Params.Kindle }}" target="_blank"><img src="{{ "media/kindle32px.png" | relURL }}" /></a></p>
+			<p><a href="https://www.amazon.fr/dp/{{ .Params.Kindle }}" target="_blank"><img src="{{ "media/kindle32px.png" | relURL }}" /></a></p>
 			{{ end }}
 			{{ if .Params.Kobo }}
-			<p><a href="{{ .Params.Kobo }}" target="_blank"><img src="{{ "media/kobo32px.png" | relURL }}" /></a></p>
+			<p><a href="https://www.kobo.com/fr/fr/ebook/{{ .Params.Kobo }}" target="_blank"><img src="{{ "media/kobo32px.png" | relURL }}" /></a></p>
 			{{ end }}
 			<p>
 				ISBN: {{ .Params.Isbn }}<br />

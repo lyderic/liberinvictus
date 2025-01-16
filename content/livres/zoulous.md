@@ -8,9 +8,9 @@ image: "zoulous.png"
 isbn: "979-83-650-8165-9"
 pages: "453"
 price: "20,00"
-amazon: "https://www.amazon.fr/dp/B0CD94BXV8"
-kindle: "https://www.amazon.fr/dp/B0CDBVTLYW"
-kobo: "https://www.kobo.com/fr/fr/ebook/deux-princes-en-afrique"
+amazon: "B0CD94BXV8"
+kindle: "B0CDBVTLYW"
+kobo: "deux-princes-en-afrique"
 ---
 
 1884, Afrique du Sud.

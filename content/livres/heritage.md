@@ -8,8 +8,8 @@ image: "heritage.png"
 isbn: "979-87-301-6299-0"
 pages: "130"
 price: "5,00"
-amazon: "https://www.amazon.fr/dp/B0BMT3998M/"
-kindle: "https://www.amazon.fr/dp/B0BN2JR4XZ/"
+amazon: "B0BMT3998M/"
+kindle: "B0BN2JR4XZ/"
 kobo:
 ---
 

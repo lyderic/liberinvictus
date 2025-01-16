@@ -8,9 +8,9 @@ image: "ollie-cartable.png"
 isbn: "978-16-991-9030-2"
 pages: "46"
 price: "4,00"
-amazon: "https://www.amazon.fr/dp/1699190305/"
-kindle: "https://www.amazon.fr/dp/B08127FKZL"
-kobo: "https://www.kobo.com/fr/fr/ebook/le-cartable-d-ollie"
+amazon: "1699190305/"
+kindle: "B08127FKZL"
+kobo: "le-cartable-d-ollie"
 ---
 
 Pour son anniversaire, Ollie reçoit un cartable de sa marraine. Qu’il est moche ! Ollie refuse de prendre son nouveau cartable pour aller à l’école…
