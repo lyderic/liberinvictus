@@ -111,10 +111,10 @@ _cache:
 	[ -f "${db}" ] && exit 0
 	printf "caching..."
 	pacman -Q go-yq > /dev/null || die "missing go-yq package!"
-	yaml=
 	for livre in content/livres/*.md; do
 		codeline="- code: $(basename "${livre}" .md)"
-		metadata=$(awk '/^---/ {if (inyaml) {exit} else {inyaml=1; next}} inyaml {print "  "$0}' "${livre}")
+		metadata=$(awk '/^---/ {if (inyaml) {exit} else {inyaml=1; next}} \
+			inyaml {print "  "$0}' "${livre}")
 		yaml=$(printf "%s\n%s\n%s\n" "${yaml}" "${codeline}" "${metadata}")
 	done
 	csv=$(echo "${yaml}" | yq -o=csv)
