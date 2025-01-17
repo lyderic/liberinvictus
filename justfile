@@ -111,19 +111,13 @@ _cache:
 	[ -f "${db}" ] && exit 0
 	printf "caching..."
 	pacman -Q go-yq > /dev/null || die "missing go-yq package!"
-	metadata=
+	yaml=
 	for livre in content/livres/*.md; do
 		codeline="- code: $(basename "${livre}" .md)"
-		metadata=$(printf "%s\n%s" "${metadata}" "${codeline}")
-		flag=0
-		while IFS= read -r line; do
-			[ "${line}" == "---" ] && {
-				case $flag in 0) flag=1 ; continue ;; 1) break ;; esac
-			}
-			metadata=$(printf "%s\n  %s" "${metadata}" "${line}")
-		done < "${livre}"
+		metadata=$(awk '/^---/ {if (inyaml) {exit} else {inyaml=1; next}} inyaml {print "  "$0}' "${livre}")
+		yaml=$(printf "%s\n%s\n%s\n" "${yaml}" "${codeline}" "${metadata}")
 	done
-	csv=$(echo "${metadata}" | yq -o=csv)
+	csv=$(echo "${yaml}" | yq -o=csv)
 	echo "${csv}" | {{sql}} -csv ".import /dev/stdin books"
 	printf "\r\e[K"
 
