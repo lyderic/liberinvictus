@@ -29,9 +29,34 @@ details *$book: _cache
 
 [group("manage")]
 check:
+	#!/usr/bin/perl
+	use strict;
+	my @template = split(/\n/, "{{template}}");
+	foreach my $livre (glob("content/livres/*.md")) {
+		print "$livre: ";
+		open(my $fh, '<', $livre) or die "nope: $!";
+		my $discard = <$fh>; # skip first line, i.e. first "---"
+		my @keys;
+		while(my $line = <$fh>) {
+			if ($line =~ /^\s*#/) { last } # skip comments
+			# skip everything after the second "---":
+			if ($line =~ "---") { last } 
+			my @bits = split(/\s+/, $line); push(@keys, $bits[0]);
+		}
+		if (join(',', @keys) eq join(',', @template)) { # compare arrays
+			print "\e[32mok\e[m\n";
+		} else {
+			print "\e[\r31m$livre: \e[1mfailed!\e[m\n";
+		}
+		close($fh);
+	}
+
+# legacy, slow
+[group("manage")]
+[private]
+check-bash:
 	#!/bin/bash
 	for livre in content/livres/*.md; do
-	#for livre in content/livres/polochon.md; do
 		keys= ; flag=0 ; while IFS= read -r line; do
 			[ "${line}" == "---" ] && {
 				case $flag in 0) flag=1 ; continue ;; 1) break ;; esac
