@@ -28,7 +28,19 @@ details *$book: _cache
 		OR code LIKE '${condition}';"
 
 [group("manage")]
-check:
+check: _check_awk
+
+# what about this?
+_check_awk:
+	#!/bin/bash
+	for livre in content/livres/*.md; do
+		awk '
+			1
+		' "${livre}"
+	done
+
+# quick, but... perl
+_check_perl:
 	#!/usr/bin/perl
 	use strict;
 	my @template = split(/\n/, "{{template}}");
@@ -52,9 +64,7 @@ check:
 	}
 
 # legacy, slow
-[group("manage")]
-[private]
-check-bash:
+_check_bash:
 	#!/bin/bash
 	for livre in content/livres/*.md; do
 		keys= ; flag=0 ; while IFS= read -r line; do
@@ -113,8 +123,7 @@ _cache:
 	pacman -Q go-yq > /dev/null || die "missing go-yq package!"
 	for livre in content/livres/*.md; do
 		codeline="- code: $(basename "${livre}" .md)"
-		metadata=$(awk '/^---/ {if (inyaml) {exit} else {inyaml=1; next}} \
-			inyaml {print "  "$0}' "${livre}")
+		metadata=$(awk '/^title/,/^kobo/ {print "  "$0}' "${livre}")
 		yaml=$(printf "%s\n%s\n%s\n" "${yaml}" "${codeline}" "${metadata}")
 	done
 	csv=$(echo "${yaml}" | yq -o=csv)
