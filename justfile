@@ -34,12 +34,36 @@ check: _check_awk
 _check_awk:
 	#!/bin/bash
 	for livre in content/livres/*.md; do
-		awk '
-			1
-		' "${livre}"
+		echo -n "$(basename ${livre}): "
+		keys=$(awk '
+			/^---$/ {if (marker) {exit} else {marker=1; next}} 
+			marker {print $1}
+		' "${livre}")
+		diff <(echo "{{template}}") <(echo "${keys}") && {
+			ok ok
+		} || {
+			fail "$(basename ${livre}) failed"
+		}
 	done
 
-# quick, but... perl
+_document_check_awk:
+	# Here the explanation of the awk blob used in _check_awk:
+	# 
+	# /^---$/ {if (marker) {exit} else {marker=1; next}}
+	# marker {print $1}
+	# 
+	# - /^---$/: matches lines with three dashes 
+	#
+	# - {if (marker) {exit} else {marker=1; next}}:
+	#   - This block is executed when a line matching the pattern (`/^---/`) is found.
+	#   - if (marker) {exit}: This checks if the variable `marker` is already set. If it is, the script exits, stopping further processing of the input file.
+	#   - else {marker=1; next}: If `marker` is not set (i.e., it is the first occurrence of a line with `---`), it sets `marker` to `1` (indicating that the marker has been encountered) and uses `next` to skip to the next line without executing any further actions for the current line.
+	#
+	# - marker {print $1}:
+	#   - This block is executed for every line after the first occurrence of a line with `---`.
+	#   - If `marker` is set (i.e., a line with `---` has been encountered), it prints the first field of the current line (`$1`). 
+
+# quick, but... no diff!!!
 _check_perl:
 	#!/usr/bin/perl
 	use strict;
