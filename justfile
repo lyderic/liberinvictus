@@ -123,7 +123,7 @@ clean:
 	rm -rf public
 
 [group("hugo")]
-compile:
+build:
 	hugo --gc --minify -b https://liberinvictus.com
 
 [group("hugo")]
@@ -131,7 +131,7 @@ serve:
 	hugo server --disableFastRender --enableGitInfo --bind 0.0.0.0
 
 [group("hugo")]
-publish: clean compile
+publish: clean build
 	#!/bin/bash
 	header "\n   Deploy manually to https://pages.cloudflare.com\n"
 
