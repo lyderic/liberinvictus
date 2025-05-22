@@ -2,7 +2,7 @@
 title: "L'essuie-main de l'empereur"
 subtitle: "Les tribulations de l'esclave essuie-main de l'empereur romain Commodus"
 date: 2019-03-01T12:59:42+01:00
-weight: 2
+weight: 12
 draft: false
 image: "modus.png"
 isbn: "978-17-908-6415-7"

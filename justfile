@@ -19,6 +19,29 @@ list: _cache
 		ORDER BY weight+0;"
 
 [group("manage")]
+llist: _lua_cache
+	#!/usr/bin/env lua
+	require "lee"
+	livres = json.decode(readfile("{{lcache}}"))
+	for _,e in ipairs(livres) do
+		printf("[%03d]  %-18.18s %s\n", e.weight, e.filename, e.title)
+	end
+_lua_cache:
+	#!/usr/bin/env lua
+	require "lee"
+	if x("test -f {{lcache}}") then os.exit(0) end
+	livres = {}
+	for file in e("find content/livres -type f"):lines() do
+		filename, path = eo("basename "..file), abs(file)
+		local livre = { path = path }
+		livre = json.decode(ea("yq -o json -f extract "..path))
+		livre.file, livre.filename, livre.path = file, filename, path
+		table.insert(livres, livre)
+	end
+	table.sort(livres, function(a,b) return a.weight < b.weight end)
+	writefile("{{lcache}}", json.encode(livres))
+
+[group("manage")]
 details *$book: _cache
 	#!/bin/bash
 	condition="%${book}%"
@@ -139,20 +162,23 @@ publish: clean build
 httpd: publish
 	busybox httpd -f -vv -p 8899 -h public
 
-_cache:
+_cache: _check_deps
 	#!/bin/bash
 	exec 1>&2
 	[ -f "${db}" ] && exit 0
 	printf "caching..."
-	pacman -Q go-yq > /dev/null || die "missing go-yq package!"
 	for livre in content/livres/*.md; do
 		codeline="- code: $(basename "${livre}" .md)"
 		metadata=$(awk '/^title/,/^kobo/ {print "  "$0}' "${livre}")
+		#metadata=$(yq -f extract "${livre}")
 		yaml=$(printf "%s\n%s\n%s\n" "${yaml}" "${codeline}" "${metadata}")
 	done
 	csv=$(echo "${yaml}" | yq -o=csv)
 	echo "${csv}" | {{sql}} -csv ".import /dev/stdin books"
 	printf "\r\e[K"
+
+_check_deps:
+	@pacman -Q go-yq > /dev/null
 
 [private]
 dump:
@@ -164,13 +190,14 @@ schema:
 
 [private]
 reset: && _cache
-	@rm -f "${db}"
+	@rm -f "${db}" "${lcache}"
 
 [private]
 v:
 	just --evaluate
 
-export db := "/dev/shm/liberinvictus.db"
+db := "/dev/shm/liberinvictus.db"
+lcache := "/dev/shm/liberinvictus.lua"
 
 sql := "sqlite3 " + db
 template := "title:
@@ -187,3 +214,4 @@ kindle:
 kobo:"
 
 set shell := ["bash","-uc"]
+set export

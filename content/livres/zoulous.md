@@ -2,7 +2,7 @@
 title: "Deux princes en Afrique"
 subtitle: "1884. Un Zoulou révèle à des Boers le secret qu'il tient de son cousin : la mort d'un grand empereur blanc"
 date: 2023-08-02T06:37:42+01:00
-weight: 1
+weight: 11
 draft: false
 image: "zoulous.png"
 isbn: "979-83-650-8165-9"
