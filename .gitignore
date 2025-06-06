@@ -8,3 +8,6 @@ public/
 
 # Vim swaps
 *.swp
+
+# backups
+backup*

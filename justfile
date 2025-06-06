@@ -8,28 +8,67 @@ _listing:
 		--list-heading=$'\e[34m{{justfile()}}\e[m\n' \
 		--list-prefix=' • ' | sed -e 's/ • \[/[/'
 
+[group("sqlpage")]
+sqlpage: _sqlite_cache
+	sqlpage -w sqlpage -d sqlpage
+
+list: slist
+
+# sqlite listing
 [group("manage")]
-list: _cache
+slist: _sqlite_cache
 	#!/bin/bash
 	{{sql}} -box "SELECT
-		FORMAT('%04d', weight) AS 'Weight',
-		FORMAT('%s.md', code) AS 'File',
+		PRINTF('%04d', weight) AS 'Weight',
+		PRINTF('%s.md', id) AS 'File',
 		title AS 'Title'
 		FROM books
-		ORDER BY weight+0;"
+		ORDER BY weight;"
 
+_sqlite_cache: _check_deps
+	#!/usr/bin/env lua
+	require "lee"
+	if x("test -f {{db}}") then os.exit(0) end
+	printf("caching...")
+	livres = {}
+	for file in e("find content/livres -type f"):lines() do
+		id, path = eo(f("basename %q .md", file)), abs(file)
+		data = ea("yq -f extract -o json "..path)
+		livre = json.decode(data)
+		livre.id, livre.path = id, path
+		table.insert(livres,livre)
+	end
+	printf("\r\27[K")
+	json.encode(livres)
+
+_old_sqlite_cache: _check_deps
+	#!/bin/bash
+	exec 1>&2
+	[ -f "${db}" ] && exit 0
+	printf "caching..."
+	for livre in content/livres/*.md; do
+		idline="- id: $(basename "${livre}" .md)"
+		metadata=$(awk '/^title/,/^kobo/ {print "  "$0}' "${livre}")
+		yaml=$(printf "%s\n%s\n%s\n" "${yaml}" "${idline}" "${metadata}")
+	done
+	csv=$(echo "${yaml}" | yq -o=csv)
+	echo "${csv}" | {{sql}} -csv ".import /dev/stdin books"
+	printf "\r\e[K"
+
+# lua listing
 [group("manage")]
 llist: _lua_cache
 	#!/usr/bin/env lua
-	require "lee"
-	livres = json.decode(readfile("{{lcache}}"))
+	require "lee"; dofile "{{lcache}}"
+	--livres = json.decode(readfile("{{jcache}}"))
 	for _,e in ipairs(livres) do
 		printf("[%03d]  %-18.18s %s\n", e.weight, e.filename, e.title)
 	end
-_lua_cache:
+
+_json_cache:
 	#!/usr/bin/env lua
 	require "lee"
-	if x("test -f {{lcache}}") then os.exit(0) end
+	if x("test -f {{jcache}}") then os.exit(0) end
 	livres = {}
 	for file in e("find content/livres -type f"):lines() do
 		filename, path = eo("basename "..file), abs(file)
@@ -39,16 +78,44 @@ _lua_cache:
 		table.insert(livres, livre)
 	end
 	table.sort(livres, function(a,b) return a.weight < b.weight end)
-	writefile("{{lcache}}", json.encode(livres))
+	writefile("{{jcache}}", json.encode(livres))
+
+_lua_cache: _json_cache
+	#!/usr/bin/env lua
+	require "lee"
+	olua = "-o lua --lua-unquoted --lua-prefix 'livres = '"
+	cmd = f("cat {{jcache}} | yq -p json %s > {{lcache}}", olua)
+	x(cmd)
+	--print(cmd)
+
+# duckdb listing
+[group("manage")]
+dlist: _duck_cache
+	#!/bin/bash
+	{{duck}} -box "SELECT
+		PRINTF('%04d', weight) AS 'Weight',
+		filename AS 'File',
+		title AS 'Title'
+		FROM books
+		ORDER BY weight;"
+
+_duck_cache: _json_cache
+	#!/bin/bash
+	exec 1>&2
+	[ -f "${ddb}" ] && exit 0
+	printf "caching..."
+	echo "CREATE TABLE books AS
+		SELECT * FROM read_json('{{jcache}}')" | {{duck}}
+	printf "\r\e[K"
 
 [group("manage")]
-details *$book: _cache
+details *$book: _sqlite_cache
 	#!/bin/bash
 	condition="%${book}%"
 	[ -z "${book}" ] && condition="%"
 	{{sql}} -line "SELECT * FROM books
 		WHERE title LIKE '${condition}'
-		OR code LIKE '${condition}';"
+		OR id LIKE '${condition}';"
 
 [group("manage")]
 check: _check_awk
@@ -162,21 +229,6 @@ publish: clean build
 httpd: publish
 	busybox httpd -f -vv -p 8899 -h public
 
-_cache: _check_deps
-	#!/bin/bash
-	exec 1>&2
-	[ -f "${db}" ] && exit 0
-	printf "caching..."
-	for livre in content/livres/*.md; do
-		codeline="- code: $(basename "${livre}" .md)"
-		metadata=$(awk '/^title/,/^kobo/ {print "  "$0}' "${livre}")
-		#metadata=$(yq -f extract "${livre}")
-		yaml=$(printf "%s\n%s\n%s\n" "${yaml}" "${codeline}" "${metadata}")
-	done
-	csv=$(echo "${yaml}" | yq -o=csv)
-	echo "${csv}" | {{sql}} -csv ".import /dev/stdin books"
-	printf "\r\e[K"
-
 _check_deps:
 	@pacman -Q go-yq > /dev/null
 
@@ -189,17 +241,20 @@ schema:
 	{{sql}} .schema
 
 [private]
-reset: && _cache
-	@rm -f "${db}" "${lcache}"
+reset:
+	@rm -f "${db}" "${ddb}" "${jcache}" "${lcache}"
 
 [private]
 v:
 	just --evaluate
 
 db := "/dev/shm/liberinvictus.db"
+ddb := "/dev/shm/liberinvictus.ddb"
+jcache := "/dev/shm/liberinvictus.json"
 lcache := "/dev/shm/liberinvictus.lua"
 
 sql := "sqlite3 " + db
+duck := "duckdb " + ddb
 template := "title:
 subtitle:
 date:
