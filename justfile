@@ -12,7 +12,62 @@ _listing:
 sqlpage: _sqlite_cache
 	sqlpage -w sqlpage -d sqlpage
 
+# generate thumbnails of book covers
+[group("sqlpage")]
+thumbs:
+	#!/bin/bash
+	[ -e sqlpage/images ] || ln -s ../static/media sqlpage/images
+	mkdir -pv sqlpage/thumbnails
+	images=$(sqlite3 db.db "SELECT image FROM books;")
+	for image in $images; do
+		src="static/media/$image"
+		[ -f $src ] || {
+			fail "$src: not found!"
+			continue
+		}
+		dst="sqlpage/thumbnails/$image"
+		base=$(basename $image .png)
+		echo -n "$image [$base]: "
+		[ -f $dst ] && {
+			warn "already done"
+			continue
+		}
+		magick identify $src
+		magick $src -resize 100x $dst
+	done
+
+# backup database
+backup:
+	sqlite3 db.db .dump | gzip -v9 > backup.sql.gz
+
 list: slist
+
+# generate markdown files
+[group("manage")]
+generate:
+	#!/bin/bash
+	codes=$(sqlite3 db.db "SELECT code FROM books;")
+	for code in $codes; do
+		dst="content/livres/$code.md"
+		[ -f $dst ] && {
+			echo "$dst found"
+			continue
+		}
+		echo -e "\e[44m$dst\e[m"
+		echo '---' > $dst	
+		echo 'draft: false' >> $dst
+		sqlite3 -separator '' db.db "SELECT
+			FORMAT('weight: %s'||char(10), weight),
+			FORMAT('title: "%s"'||char(10), title),
+			FORMAT('subtitle: "%s"'||char(10), subtitle),
+			FORMAT('date: "%s"'||char(10), date),
+			FORMAT('image: "%s"'||char(10), image),
+			FORMAT('isbn: "%s"'||char(10), isbn),
+			FORMAT('pages: %s'||char(10), pages),
+			FORMAT('amazon: "%s"'||char(10)||'---'||char(10)||'%s', amazon, presentation)
+			FROM books
+			WHERE code = '$code';" >> $dst
+	done
 
 # sqlite listing
 [group("manage")]
@@ -197,8 +252,8 @@ _check_bash:
 	done
 
 [group("manage")]
-sql:
-	@{{sql}}
+sql *args:
+	@{{sql}} {{args}}
 
 [group("manage")]
 template:
@@ -232,11 +287,9 @@ httpd: publish
 _check_deps:
 	@pacman -Q go-yq > /dev/null
 
-[private]
 dump:
 	{{sql}} .dump
 
-[private]
 schema:
 	{{sql}} .schema
 
@@ -253,7 +306,7 @@ ddb := "/dev/shm/liberinvictus.ddb"
 jcache := "/dev/shm/liberinvictus.json"
 lcache := "/dev/shm/liberinvictus.lua"
 
-sql := "sqlite3 " + db
+sql := "sqlite3 db.db"
 duck := "duckdb " + ddb
 template := "title:
 subtitle:
