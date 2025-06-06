@@ -11,7 +11,6 @@ SELECT 'table' AS component,
 	'Amazon' AS markdown,
 	'Kindle' AS markdown,
 	'Kobo' AS markdown;
-
 SELECT
 	FORMAT('%04d', b.weight) AS 'Position',
 	b.title AS 'Titre',
@@ -21,6 +20,13 @@ SELECT
 FROM books AS b
 JOIN urls AS u
 ORDER BY b.weight;
+
+SELECT 'list' AS component;
+SELECT
+	title AS title,
+	oneliner AS description_md,
+	FORMAT('images/%s', image) AS image_url
+FROM books;
 
 SELECT 'card' AS component,
 	'Présentation des ouvrages' AS title,
