@@ -38,6 +38,7 @@ thumbs:
 
 # backup database
 backup:
+	cp -iv db.db /dev/shm/db_$(date +%F_%T).db
 	sqlite3 db.db .dump | gzip -v9 > backup.sql.gz
 
 list: slist
