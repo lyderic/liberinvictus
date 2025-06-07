@@ -1,13 +1,13 @@
 ---
+draft: false
 title: "Polochon et le lutin"
 subtitle: "Une histoire fantastique avec des lutins, des dieux et un poney"
-date: 2020-10-06T13:12:33+01:00
+date: "2020-10-06T13:12:33+01:00"
 weight: 13
-draft: false
 image: "polochon.png"
 isbn: "978-1-796-42616-8"
-pages: "258"
-price: "11,00"
+pages: 258
+price: 11,00 €
 amazon: "1796426164"
 kindle: "B08KS7WYGV"
 kobo: "polochon-et-le-lutin"

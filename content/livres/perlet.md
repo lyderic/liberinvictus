@@ -1,16 +1,16 @@
 ---
+draft: false
 title: "L'affaire Perlet"
 subtitle: "Intrigues royalistes de la Révolution, du Consulat et de l'Empire"
-date: 2025-05-21T11:37:42+01:00
+date: "2025-05-21T11:37:42+01:00"
 weight: 1
-draft: false
 image: "perlet.png"
 isbn: "979-8-313-16181-5"
-pages: "286"
-price: "8,50"
+pages: 286
+price: 8,50 €
 amazon: "B0DZT57B9D"
 kindle: "B0DZTKLVSR"
-kobo:
+kobo: ""
 ---
 Louis Fauche, jeune libraire de Neuchâtel, mène une vie monotone avec sa femme Augustine. Tout bascule à la Révolution française. Un mystérieux personnage le recrute comme agent royaliste et le charge de soudoyer un général républicain avec l'argent de l'Angleterre. Une existence trépidante et dangereuse s'ouvre alors à lui. À la fois livre d'histoire hyper documenté et roman d'espionnage haletant. _L'affaire Perlet_, nous entraîne à travers Paris, l'Angleterre et la prison du Temple, offrant une plongée fascinante dans l'Histoire et des personnages mémorables, admirablement mis en scène par le talent incomparable de Lenotre.
 
