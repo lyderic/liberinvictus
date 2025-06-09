@@ -77,6 +77,7 @@ backup:
 [group("hugo")]
 clean:
 	rm -rf public
+	rm -rf content/livres
 
 [group("hugo")]
 build: generate
