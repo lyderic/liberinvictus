@@ -90,7 +90,9 @@ serve: build
 [group("hugo")]
 publish: clean build
 	#!/bin/bash
-	header "\n   Deploy manually to https://pages.cloudflare.com\n"
+	#header "\n   Deploy manually to https://pages.cloudflare.com\n"
+	incus file push --recursive --create-dirs public/* k:liber/srv/http
+	incus exec k:liber -- systemctl restart darkhttpd.service
 
 [group("hugo")]
 httpd: publish
