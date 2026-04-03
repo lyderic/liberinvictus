@@ -86,7 +86,7 @@ build: generate
 
 [group("hugo")]
 serve: build
-	hugo server --disableFastRender --enableGitInfo --bind 0.0.0.0
+	hugo server --disableFastRender --bind 0.0.0.0
 
 [group("hugo")]
 publish: clean build
