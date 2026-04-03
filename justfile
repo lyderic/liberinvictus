@@ -91,8 +91,8 @@ serve: build
 [group("hugo")]
 publish: clean build
 	#!/bin/bash
-	incus file push --recursive --create-dirs public/* k:liber/srv/http
-	incus exec k:liber -- systemctl restart darkhttpd.service
+	incus file push --recursive --create-dirs public/* e:liber/srv/http
+	incus exec e:liber -- systemctl restart darkhttpd.service
 
 [group("hugo")]
 httpd: publish
