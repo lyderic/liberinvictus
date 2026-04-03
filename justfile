@@ -10,7 +10,7 @@ _listing:
 
 list:
 	#!/bin/bash
-	{{sql}} -box "SELECT
+	$sql -box "SELECT
 		PRINTF('%04d', weight) AS 'Weight',
 		PRINTF('%s.md', code) AS 'File',
 		title AS 'Title'
@@ -27,44 +27,45 @@ _link_images:
 # generate content markdown files
 [group("manage")]
 generate:
-	#!/usr/bin/env lua
-	require "lee"
+	#!/usr/bin/env -S lua -llee
 	dir = "content/livres"
 	x("mkdir -pv "..dir)
-	fh = io.open("templates/livre.tmpl")
-	data = ea([[{{sql}} -json "SELECT * FROM books;"]])
+	tmpl = io.open("templates/livre.tmpl")
+	data = ea("%s -json 'SELECT * FROM books;'", env("sql"))
 	books = json.decode(data)
 	for _,book in ipairs(books) do
-		--local dst = f(dir.."/%s.md", book.code)
-		local dst = f(dir.."/%s.md", book.code)
+		local dst = f("%s/%s.md", dir, book.code)
 		local o = io.open(dst, "w")
-		for line in fh:lines() do
-			if line:find("%[") then -- '[' and ']' escaped with '%'
-				item = line:match("%[(.-)%]")
-				line = line:gsub("%[.-%]", book[item] or "")
+		for line in tmpl:lines() do
+			if line:find("%[") then -- [ and ] escaped with '%'
+				local key = line:match("%[(.-)%]")
+				local item,n = line:gsub("%[.-%]", book[key] or "")
+				if n ~= 1 then error("error in line: "..line) end
+				o:write(item.."\n")
+			else
+				o:write(line.."\n")
 			end
-			o:write(line.."\n"); goto next
-		::next:: end
-		fh:seek("set")
+		end
 		o:close()
+		tmpl:seek("set")
 		print("ok", dst)
 	end
-	fh:close()
+	tmpl:close()
 
 # connect to database
 [group("database")]
 sql:
-	@{{sql}}
+	@$sql
 
 # database console dump
 [group("database")]
 dump:
-	@{{sql}} .dump
+	@$sql .dump
 
 # database schema
 [group("database")]
 schema:
-	{{sql}} .schema
+	@$sql .schema
 
 # backup database
 [group("database")]
@@ -90,7 +91,6 @@ serve: build
 [group("hugo")]
 publish: clean build
 	#!/bin/bash
-	#header "\n   Deploy manually to https://pages.cloudflare.com\n"
 	incus file push --recursive --create-dirs public/* k:liber/srv/http
 	incus exec k:liber -- systemctl restart darkhttpd.service
 

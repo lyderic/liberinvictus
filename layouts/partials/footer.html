@@ -1,4 +1,4 @@
 <div class="container foot text-center">
-	&copy; Liber Invictus v{{ now.Format "200601021504" }} {{ .GitInfo.AbbreviatedHash }}
+	&copy; Liber Invictus v{{ now.Format "200601021504" }} {{ with .GitInfo }}{{ .AbbreviatedHash }}{{ end }}
 	<span style="margin-left:1em"><a class="btn btn-outline-warning btn-sm" href="/">Retour à l'accueil</a></span>
 </div>
